@@ -2179,6 +2179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7296a60609e0cfb4db228d32eb7f759e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ActivationEtoile3
+  depose: {fileID: 2008669770}
   SpritesEtoiles:
   - {fileID: 8667027624552505876, guid: f88f2143b1d295845919f6289f5036c6, type: 3}
   - {fileID: 1781407419429470612, guid: 5ed1535599bcb5949959c7320b96c8ea, type: 3}
