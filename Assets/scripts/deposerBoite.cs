@@ -9,6 +9,13 @@ public class deposerBoite : MonoBehaviour
     string[] nomBoite = { "boite_1", "boite_2", "boite_3", "boite_4", "boite_5", "boite_6" };
     public int points = 0;
     private bool isBonneBoite = false;
+   public AudioClip sonPlacementMauvais;
+    public AudioClip sonPlacementBon;
+
+
+
+    AudioSource audioSource;
+
 
 
 
@@ -16,6 +23,7 @@ public class deposerBoite : MonoBehaviour
     void Start()
     {
         Debug.Log("START - Total points" + this.points);
+           audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -52,12 +60,14 @@ public class deposerBoite : MonoBehaviour
         {
             this.points--;
             Debug.Log("pointperdu: "+ this.points);
+             audioSource.PlayOneShot(sonPlacementMauvais);
         }
         else
         {
             this.points++;
             Debug.Log("pointgagne: "+ this.points);
             collision.gameObject.GetComponent<GestionBoites>().Cacher();
+            audioSource.PlayOneShot(sonPlacementBon);
         }
        
     }
