@@ -7,7 +7,7 @@ public class GestionBoites : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().enabled = false;
         GetComponent<Collider2D>().enabled = false;
-        // Invoke("Reapparaitre", 2f);
+      
     }
 }
 
