@@ -14,6 +14,13 @@ public class deposerBoite : MonoBehaviour
 
     public AudioClip sonEtoile;
 
+  
+   public AudioClip[] SonsVic;
+   public AudioClip[] SonsDef;
+
+   private AudioClip SonVicJoue;
+   private AudioClip SonDefJoue;
+
 
 
     AudioSource audioSource;
@@ -24,13 +31,15 @@ public class deposerBoite : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("START - Total points" + this.points);
+        Debug.Log("START - Total points" + points);
            audioSource = GetComponent<AudioSource>();
+    
     }
 
     void Update()
     {
-        Debug.Log("UPDATE - Total points" + this.points);
+        Debug.Log("UPDATE - Total points" + points);
+        
     }
 
     // Update is called once per frame
@@ -44,35 +53,40 @@ public class deposerBoite : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerEnter2D - Total points" + this.points);
+        Debug.Log("OnTriggerEnter2D - Total points" + points);
       
-        this.isBonneBoite = false;
+        isBonneBoite = false;
   
         if ((gameObject.tag == nomBulle[0] && collision.gameObject.tag == nomBoite[0]) ||
             (gameObject.tag == nomBulle[1] && collision.gameObject.tag == nomBoite[1]) ||
             (gameObject.tag == nomBulle[2] && collision.gameObject.tag == nomBoite[2]))
         {
-            
-            this.isBonneBoite = true;
+             
+
+            isBonneBoite = true;
         }
        
 
        
-        if (this.isBonneBoite == false)
+        if (isBonneBoite == false)
         {
-            this.points--;
-            Debug.Log("pointperdu: "+ this.points);
+            points-=1;
+            Debug.Log("pointperdu: "+ points);
              audioSource.PlayOneShot(sonPlacementMauvais);
+              SonDefJoue = SonsDef[Random.Range(0, SonsDef.Length)];
+            audioSource.PlayOneShot(SonDefJoue);
         }
         else
         {
-            this.points++;
-            Debug.Log("pointgagne: "+ this.points);
+            points+=3;
+            Debug.Log("pointgagne: "+ points);
             collision.gameObject.GetComponent<GestionBoites>().Cacher();
             audioSource.PlayOneShot(sonPlacementBon);
+             SonVicJoue = SonsVic[Random.Range(0, SonsVic.Length)];
+            audioSource.PlayOneShot(SonVicJoue);
         }
 
-        if (this.points == 1 || this.points == 2 || this.points == 3)
+        if (points == 1 || points == 2 || points == 3)
         {
             audioSource.PlayOneShot(sonEtoile);
         
@@ -80,80 +94,3 @@ public class deposerBoite : MonoBehaviour
        
     }
 }
-/*
-using UnityEngine;
-using UnityEngine.EventSystems; //!verfier si permission d'utiliser !!!!!!
-
-public class Pointage : MonoBehaviour
-{
-
-
-    string[] nomBulle = { "bulle_1", "bulle_2", "bulle_3" };
-    string[] nomBoite = { "boite_1", "boite_2", "boite_3", "boite_4", "boite_5", "boite_6" };
-    private int points = 0;
-    private bool BonneBoite = false;
-    private bool MauvaiseBoite = false;
-
-    private bool DeuxiemeBoiteActivee = false;
-
-
-  
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        // Step 1 — figure out if it's the right box
-        if ((gameObject.tag == nomBulle[0] && collision.gameObject.tag == nomBoite[0]) ||
-            (gameObject.tag == nomBulle[1] && collision.gameObject.tag == nomBoite[1]) ||
-            (gameObject.tag == nomBulle[2] && collision.gameObject.tag == nomBoite[2]))
-        {
-            DeuxiemeBoiteActivee = true;
-            BonneBoite = true;
-            MauvaiseBoite = false;
-
-        }
-
-        else if ((gameObject.tag == nomBulle[0] && collision.gameObject.tag == nomBoite[3]) ||
-            (gameObject.tag == nomBulle[1] && collision.gameObject.tag == nomBoite[4]) ||
-            (gameObject.tag == nomBulle[2] && collision.gameObject.tag == nomBoite[5]))
-        {
-            if (DeuxiemeBoiteActivee == true)
-            {
-                BonneBoite = true;
-                MauvaiseBoite = false;
-            }
-            else
-            {
-                BonneBoite = false;
-                MauvaiseBoite = true;
-            }
-
-        }
-
-        // Step 2 — assign points based on result
-        if (MauvaiseBoite == true)
-        {
-            points -= 1;
-            Debug.Log(points);
-        }
-        else if (BonneBoite == true)
-        {
-            points += 3;
-            Debug.Log(points);
-        }
-        else
-        {
-            BonneBoite = false;
-            MauvaiseBoite = true;
-        }
-    }
-}
-*/
-
-

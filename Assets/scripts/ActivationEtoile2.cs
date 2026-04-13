@@ -16,11 +16,11 @@ public class ActivationEtoile2 : MonoBehaviour
     void Update()
     {
         
-        if (deposerboite.points >=2)
+        if (deposerboite.points >=6)
         {
             newSprite = SpritesEtoiles[1];
         }
-        else if (deposerboite.points <= 1)
+        else if (deposerboite.points < 6)
         {
             newSprite = SpritesEtoiles[0];
         }

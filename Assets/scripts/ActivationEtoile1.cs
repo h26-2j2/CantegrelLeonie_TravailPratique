@@ -6,13 +6,11 @@ public class ActivationEtoile1 : MonoBehaviour
     public GameObject depose;
     [SerializeField] Sprite[] SpritesEtoiles;
     [SerializeField] Sprite newSprite;
-    // public AudioClip sonEtoile;
+  
 
-    //  AudioSource audioSource;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //    audioSource = GetComponent<AudioSource>();
+        
     }
     void Awake()
     {
@@ -24,12 +22,12 @@ public class ActivationEtoile1 : MonoBehaviour
     void Update()
     {
         
-        if (deposerboite.points >=1)
+        if (deposerboite.points >=3)
         {
             newSprite = SpritesEtoiles[1];
-            //  audioSource.PlayOneShot(sonEtoile);
+          
         }
-        else if (deposerboite.points == 0)
+        else if (deposerboite.points < 3)
         {
             newSprite = SpritesEtoiles[0];
         }

@@ -1,7 +1,7 @@
 
 
 using UnityEngine;
-using UnityEngine.EventSystems; //!verfier si permission d'utiliser !!!!!!
+using UnityEngine.EventSystems; 
 
 public class glisserBoite : MonoBehaviour
 {
@@ -40,10 +40,3 @@ public class glisserBoite : MonoBehaviour
         transform.position = new Vector2(-8f, 5f);
     }
 } }
-//liste
-/* 1. lorsque la boite arrive à la fin du tapis roulant, elle réapparaît à sa position initiale
- 2. on peut cliquer et glisser la boîte
- 3. lorsque la carte est cliquée et glissée à la bonne position, elle disparait
- 4 les points accumulent correctement
- 5. les sprites changent correctement*/
-
