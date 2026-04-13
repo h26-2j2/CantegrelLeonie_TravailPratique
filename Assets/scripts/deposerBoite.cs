@@ -12,6 +12,8 @@ public class deposerBoite : MonoBehaviour
    public AudioClip sonPlacementMauvais;
     public AudioClip sonPlacementBon;
 
+    public AudioClip sonEtoile;
+
 
 
     AudioSource audioSource;
@@ -68,6 +70,12 @@ public class deposerBoite : MonoBehaviour
             Debug.Log("pointgagne: "+ this.points);
             collision.gameObject.GetComponent<GestionBoites>().Cacher();
             audioSource.PlayOneShot(sonPlacementBon);
+        }
+
+        if (this.points == 1 || this.points == 2 || this.points == 3)
+        {
+            audioSource.PlayOneShot(sonEtoile);
+        
         }
        
     }

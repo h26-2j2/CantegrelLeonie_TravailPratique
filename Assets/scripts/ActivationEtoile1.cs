@@ -10,10 +10,14 @@ public class ActivationEtoile1 : MonoBehaviour
 
     //  AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        //    audioSource = GetComponent<AudioSource>();
+    }
     void Awake()
     {
         deposerboite = depose.GetComponent<deposerBoite>();
-        //    audioSource = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
